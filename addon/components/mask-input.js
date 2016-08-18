@@ -3,31 +3,16 @@ import TextMask from 'ember-text-mask/lib/text-mask';
 
 export default Ember.TextField.extend({
 
-  textMaskInputElement: null,
-
-  _attachEventListeners(textMaskInputElement) {
-    Ember.$(this.get('element')).on('input', ({target: {value}}) => {
-      return textMaskInputElement.update(value);
-    });
-  },
-
-  _removeEventListeners() {
-    Ember.$(this.get('element')).off('input');
-  },
-
   didInsertElement() {
     this._super(...arguments);
-    
-    const textMaskInputElement = TextMask.textMaskCore.createTextMaskInputElement({
+
+    this.set('textMaskInputElement', TextMask.textMaskCore.createTextMaskInputElement({
       inputElement: this.get('element'),
-      mask: this.get('mask')
-    });
-    this.set('textMaskInputElement', textMaskInputElement);
-    this._attachEventListeners(textMaskInputElement);
+      mask: ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
+    }));
   },
 
-  willDestroyElement() {
-    this._super(...arguments);
-    this._removeEventListeners();
+  input(event) {
+    this.get('textMaskInputElement').update(event.target.value);
   }
 });
