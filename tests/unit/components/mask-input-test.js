@@ -1,4 +1,4 @@
-import Ember from 'ember';
+// import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 
 moduleForComponent('mask-input', 'Unit | Component | mask input', {
