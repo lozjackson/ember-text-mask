@@ -5,11 +5,8 @@ export default Ember.TextField.extend({
 
   didInsertElement() {
     this._super(...arguments);
-
-    this.set('textMaskInputElement', TextMask.textMaskCore.createTextMaskInputElement({
-      inputElement: this.get('element'),
-      mask: ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
-    }));
+    let { element:inputElement, mask } = this.getProperties('element', 'mask');
+    this.set('textMaskInputElement', TextMask.textMaskCore.createTextMaskInputElement({ inputElement, mask }));
   },
 
   input(event) {
