@@ -27,10 +27,8 @@ test('input() method calls textMaskInputElement.update()', function(assert) {
 
   // stub the textMaskInputElement
   component.set('textMaskInputElement', {
-    update: (value) => {
-      assert.equal(value, 'abc');
-    }
+    update: () => assert.ok(true)
   });
 
-  component.input({ target: { value: 'abc' } });
+  component.input();
 });
