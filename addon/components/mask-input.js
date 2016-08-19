@@ -1,5 +1,6 @@
 import Ember from 'ember';
-import { createTextMaskInputElement } from 'text-mask-core';
+
+const { createTextMaskInputElement } = self.textMaskCore;
 
 export default Ember.TextField.extend({
 
