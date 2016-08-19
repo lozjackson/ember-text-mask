@@ -4,13 +4,14 @@ const { createTextMaskInputElement } = self.textMaskCore;
 
 export default Ember.TextField.extend({
 
+  inputElement: Ember.computed.alias('element'),
+
   didInsertElement() {
     this._super(...arguments);
-    let { element:inputElement, mask } = this.getProperties('element', 'mask');
-    this.set('textMaskInputElement', createTextMaskInputElement({ inputElement, mask }));
+    this.set('textMaskInputElement', createTextMaskInputElement(this.getProperties('inputElement', 'mask', 'guide', 'placeholderChar', 'keepCharPositions', 'pipe', 'onReject', 'onAccept')));
   },
 
-  input(event) {
-    this.get('textMaskInputElement').update(event.target.value);
+  input() {
+    this.get('textMaskInputElement').update();
   }
 });
