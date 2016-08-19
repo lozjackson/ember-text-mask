@@ -4,7 +4,7 @@ const { createTextMaskInputElement } = self.textMaskCore;
 
 export default Ember.TextField.extend({
 
-  inputElement: Ember.computed.alias('element'),
+  inputElement: Ember.computed.readOnly('element'),
 
   didInsertElement() {
     this._super(...arguments);
