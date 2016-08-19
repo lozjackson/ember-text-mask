@@ -1,5 +1,6 @@
 import Ember from 'ember';
-import TextMask from 'ember-text-mask/lib/text-mask';
+// import TextMask from 'ember-text-mask/lib/text-mask';
+import TextMask from 'text-mask-core';
 
 export default Ember.TextField.extend({
 
