@@ -2,7 +2,7 @@
   function vendorModule() {
     'use strict';
 
-    return { 'default': self['text-mask-core'] };
+    return self['textMaskCore'];
   }
 
   define('text-mask-core', [], vendorModule);
